@@ -1,2 +1,97 @@
-/**/
+/* デフォルト設定 */
+* {
+	color: #def;
+}
 
+/* メインエリア */
+.mainArea {
+	height: 100%;
+	background: #333;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+}
+
+/* 上部エリア */
+.headerArea {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-content: space-between;
+	padding: 5% 0;
+}
+
+/* カウンター表示エリア、設定時間表示エリア */
+.counterArea {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	font-size: 25vw;
+	font-family: monospace, serif;
+	position: relative;
+}
+
+.counterArea:before {
+	position: absolute;
+	top: -10%;
+	left: 26%;
+	content: ":";
+}
+
+.counterArea:after {
+	position: absolute;
+	right: 26%;
+	content: ".";
+}
+
+/* ボタンエリア、時間設定エリア */
+.buttonArea,
+.setTimeArea {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+}
+
+.buttonArea > *,
+.setTimeArea > * {
+	width: 20vw;
+	height: 20vw;
+	font-size: 5vw;
+	border-radius: 10vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid skyblue;
+}
+
+/* 下矢印 */
+.arrowBottom {
+	width: 100%;
+	font-size: 10vw;
+	text-align: center;
+	margin: 5% 0;
+}
+
+/* 下部エリア */
+.footerArea {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* 音設定エリア */
+.setSoundArea {
+	width: 50%;
+	margin: 10% 0;
+}
+
+.setSoundArea > .segment__item > .segment__button {
+	display: flex;
+	height: 15vw;
+	justify-content: center;
+	align-items: center;
+}
+
+.setSoundArea > .segment__item > .segment__button > span {
+	font-size: 10vw;
+}

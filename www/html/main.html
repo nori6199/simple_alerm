@@ -1,0 +1,69 @@
+<!-- メインエリア -->
+<section ng-controller="MainCtrl" class="mainArea">
+
+	<!-- 上部エリア -->
+	<section class="headerArea">
+
+		<!-- カウンター表示エリア -->
+		<section class="counterArea">
+			<span>{{mm | addZero}}</span>
+			<span>{{ss | addZero}}</span>
+			<span>{{ms | addZero}}</span>
+		</section>
+
+		<!-- ボタンエリア -->
+		<section class="buttonArea">
+			<ons-button ng-click="startTimer()" ng-disabled="startBtnDisabledFlg">START</ons-button>
+			<ons-button ng-click="stopTimer()" ng-disabled="stopBtnDisabledFlg">STOP</ons-button>
+			<ons-button ng-click="resetTimer()" ng-disabled="resetBtnDisabledFlg">RESET</ons-button>
+		</section>
+
+		<!-- 下矢印 -->
+		<div class="arrowBottom">
+			<span class="ion-arrow-down-b"></span>
+			<span class="ion-arrow-down-b"></span>
+			<span class="ion-arrow-down-b"></span>
+			<span class="ion-arrow-down-b"></span>
+			<span class="ion-arrow-down-b"></span>
+		</div>
+
+		<!-- 設定時間表示エリア -->
+		<section class="counterArea">
+			<span>{{setMm | addZero}}</span>
+			<span>{{setSs | addZero}}</span>
+			<span>{{setMs | addZero}}</span>
+		</section>
+
+		<!-- 時間設定エリア -->
+		<section class="setTimeArea">
+			<ons-button ng-click="addSetTimeMm(5)">+5分</ons-button>
+			<ons-button ng-click="addSetTimeMm(1)">+1分</ons-button>
+			<ons-button ng-click="addSetTimeSs(30)">+30秒</ons-button>
+			<ons-button ng-click="addSetTimeSs(10)">+10秒</ons-button>
+			<ons-button ng-click="clearSetTime()">C</ons-button>
+		</section>
+
+	</section>
+
+	<!-- 下部エリア -->
+	<section class="footerArea">
+
+		<!-- 音設定エリア -->
+		<div class="setSoundArea segment">
+			<div class="segment__item">
+				<input type="radio" class="segment__input" name="navi-segment-a" checked>
+				<div class="segment__button">
+					<span class="ion-volume-high"></span>
+				</div>
+			</div>
+
+			<div class="segment__item">
+				<input type="radio" class="segment__input" name="navi-segment-a">
+				<div class="segment__button">
+					<span class="ion-volume-mute"></span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</section>

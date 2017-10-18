@@ -1,0 +1,55 @@
+<!-- メインエリア -->
+<section ng-controller="MainCtrl as MC" class="mainArea">
+
+	<!--  -->
+
+	<!-- カウンター表示エリア -->
+	<section class="dispTimeArea">
+		<span class="ion-ios-stopwatch"></span>
+		<span>{{MC.mm | addZero}}</span>
+		<span>:</span>
+		<span>{{MC.ss | addZero}}</span>
+		<span>.</span>
+		<span>{{MC.ms | addZero}}</span>
+	</section>
+
+	<!-- ボタンエリア -->
+	<section class="buttonArea">  
+		<ons-button ng-click="MC.startTimer()" ng-if="MC.startBtnFlg">START</ons-button>
+		<ons-button ng-click="MC.stopTimer()" ng-if="MC.stopBtnFlg">STOP</ons-button>
+		<ons-button ng-click="MC.resetTimer()" ng-if="MC.resetBtnFlg">RESET</ons-button>
+	</section>
+
+	<!-- 設定エリア -->
+	<section class="settingArea">
+
+		<!-- 時間設定エリア -->
+		<section class="settingTimeArea button-bar">
+			
+			<!-- 設定時間表示エリア -->
+			<section class="dispSetTimeArea">
+				<span class="ion-ios-stopwatch"></span>
+				<span>{{MC.setMm | addZero}}</span>
+				<span>:</span>
+				<span>{{MC.setSs | addZero}}</span>
+				<span>.</span>
+				<span>{{MC.setMs | addZero}}</span>
+			</section>
+			
+			<div class="button-bar__item">
+				<button class="button-bar__button">5分</button>
+			</div>
+			<div class="button-bar__item">
+				<button class="button-bar__button">1分</button>
+			</div>
+			<div class="button-bar__item">
+				<button class="button-bar__button">30秒</button>
+			</div>
+		</section>
+
+		<!-- 音設定エリア -->
+		<section class="settingSoundArea">
+		</section>
+
+	</section>
+</section>
