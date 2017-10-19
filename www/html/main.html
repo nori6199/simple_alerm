@@ -6,9 +6,9 @@
 
 		<!-- カウンター表示エリア -->
 		<section class="counterArea">
-			<span>{{mm | addZero}}</span>
-			<span>{{ss | addZero}}</span>
-			<span>{{ms | addZero}}</span>
+			<span class="mm">{{mm | addZero}}</span>
+			<span class="mark">:</span>
+			<span class="ss">{{ss | addZero}}</span>
 		</section>
 
 		<!-- ボタンエリア -->
@@ -18,20 +18,16 @@
 			<ons-button ng-click="resetTimer()" ng-disabled="resetBtnDisabledFlg">RESET</ons-button>
 		</section>
 
-		<!-- 下矢印 -->
-		<div class="arrowBottom">
-			<span class="ion-arrow-down-b"></span>
-			<span class="ion-arrow-down-b"></span>
-			<span class="ion-arrow-down-b"></span>
-			<span class="ion-arrow-down-b"></span>
-			<span class="ion-arrow-down-b"></span>
-		</div>
+		<!-- 境界エリア -->
+		<section class="borderArea">
+			<span class="border"></span>
+		</section>
 
 		<!-- 設定時間表示エリア -->
 		<section class="counterArea">
-			<span>{{setMm | addZero}}</span>
-			<span>{{setSs | addZero}}</span>
-			<span>{{setMs | addZero}}</span>
+			<span class="mm">{{setMm | addZero}}</span>
+			<span class="mark">:</span>
+			<span class="ss">{{setSs | addZero}}</span>
 		</section>
 
 		<!-- 時間設定エリア -->
@@ -51,16 +47,16 @@
 		<!-- 音設定エリア -->
 		<div class="setSoundArea segment">
 			<div class="segment__item">
-				<input type="radio" class="segment__input" name="navi-segment-a" checked>
+				<input type="radio" class="segment__input" name="navi-segment-a" ng-model="soundFlg" ng-value="true">
 				<div class="segment__button">
-					<span class="ion-volume-high"></span>
+					<span class="ion-android-volume-up"></span>
 				</div>
 			</div>
 
 			<div class="segment__item">
-				<input type="radio" class="segment__input" name="navi-segment-a">
+				<input type="radio" class="segment__input" name="navi-segment-a" ng-model="soundFlg" ng-value="false">
 				<div class="segment__button">
-					<span class="ion-volume-mute"></span>
+					<span class="ion-android-volume-off"></span>
 				</div>
 			</div>
 		</div>

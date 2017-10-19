@@ -10,6 +10,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-content: space-between;
+	padding-top: 5vw;
 }
 
 /* 上部エリア */
@@ -18,30 +19,29 @@
 	display: flex;
 	flex-wrap: wrap;
 	align-content: space-between;
-	padding: 5% 0;
 }
 
 /* カウンター表示エリア、設定時間表示エリア */
 .counterArea {
 	width: 100%;
 	display: flex;
-	justify-content: space-around;
-	font-size: 25vw;
+	justify-content: space-between;
+	font-size: 24vw;
 	font-family: monospace, serif;
-	position: relative;
 }
 
-.counterArea:before {
-	position: absolute;
-	top: -10%;
-	left: 26%;
-	content: ":";
+.counterArea > .mm {
+	width: 40vw;
+	text-align: right;
 }
 
-.counterArea:after {
-	position: absolute;
-	right: 26%;
-	content: ".";
+.counterArea > .ss {
+	width: 40vw;
+	text-align: left;
+}
+.counterArea > .mark {
+	width: 20vw;
+	text-align: center;
 }
 
 /* ボタンエリア、時間設定エリア */
@@ -61,15 +61,34 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 1px solid skyblue;
 }
 
-/* 下矢印 */
-.arrowBottom {
+/* 境界エリア */
+.borderArea {
 	width: 100%;
-	font-size: 10vw;
-	text-align: center;
-	margin: 5% 0;
+	padding: 8vw 0;
+	margin: 5vw 10vw;
+	position: relative;
+}
+
+.borderArea > .border {
+	width: 100%;
+	display: block;
+	border: 1px solid #999;
+}
+
+.borderArea > .border:before {
+	position: absolute;
+	content: "カウンター";
+	top: 0;
+	left: 0;
+}
+
+.borderArea > .border:after {
+	position: absolute;
+	content: "設定時間";
+	bottom: 0;
+	left: 0;
 }
 
 /* 下部エリア */
