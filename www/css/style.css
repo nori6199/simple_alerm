@@ -72,14 +72,14 @@
 }
 
 .borderArea > .border {
-	width: 100%;
+	width: 50%;
 	display: block;
 	border: 1px solid #999;
 }
 
 .borderArea > .border:before {
 	position: absolute;
-	content: "カウンター";
+	content: "タイマー";
 	top: 0;
 	left: 0;
 }
@@ -89,6 +89,15 @@
 	content: "設定時間";
 	bottom: 0;
 	left: 0;
+}
+
+.borderArea > .countDown {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 50%;
+	text-align: right;
+	font-family: monospace, serif;
 }
 
 /* 下部エリア */

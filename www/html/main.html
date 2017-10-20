@@ -6,9 +6,9 @@
 
 		<!-- カウンター表示エリア -->
 		<section class="counterArea">
-			<span class="mm">{{mm | addZero}}</span>
+			<span class="mm">{{counter | toMm | addZero}}</span>
 			<span class="mark">:</span>
-			<span class="ss">{{ss | addZero}}</span>
+			<span class="ss">{{counter | toSs | addZero}}</span>
 		</section>
 
 		<!-- ボタンエリア -->
@@ -21,13 +21,19 @@
 		<!-- 境界エリア -->
 		<section class="borderArea">
 			<span class="border"></span>
+			<p class="countDown">
+				<span class="">あと</span>
+			<span class="mm">{{leastTime | toMm | addZero}}</span>
+			<span class="mark">:</span>
+			<span class="ss">{{leastTime | toSs | addZero}}</span>
+			</p>
 		</section>
 
 		<!-- 設定時間表示エリア -->
 		<section class="counterArea">
-			<span class="mm">{{setMm | addZero}}</span>
+			<span class="mm">{{setTime | toMm | addZero}}</span>
 			<span class="mark">:</span>
-			<span class="ss">{{setSs | addZero}}</span>
+			<span class="ss">{{setTime | toSs | addZero}}</span>
 		</section>
 
 		<!-- 時間設定エリア -->

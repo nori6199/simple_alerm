@@ -8,6 +8,16 @@ module.controller('MainCtrl', ['$scope', '$interval', '$window', function($scope
 	$scope.setMm = 0;
 	// 設定秒
 	$scope.setSs = 0;
+	// 残り分
+	$scope.leastMm = 0;
+	// 残り秒
+	$scope.leastSs = 0;
+	// カウンター
+	$scope.counter = 0;
+	// 設定時間
+	$scope.setTime = 0;
+	// 残り時間
+	$scope.leastTime = 0;
 	// 「START」ボタン活性制御フラグ
 	$scope.startBtnDisabledFlg = false;
 	// 「STOP」ボタン活性制御フラグ
@@ -18,11 +28,7 @@ module.controller('MainCtrl', ['$scope', '$interval', '$window', function($scope
 	$scope.soundFlg = true;
 	
 		// promiseオブジェクト
-	var promise = undefined,
-		// カウンター
-		counter = 0,
-		// 設定時間
-		setTime = 0;
+	var promise = undefined;
 	
 	// 「START」押下処理 カウンターを動かす
 	$scope.startTimer = function() {
@@ -31,21 +37,18 @@ module.controller('MainCtrl', ['$scope', '$interval', '$window', function($scope
 		$scope.resetBtnDisabledFlg = false;
 	
 		promise = $interval(function() {
-			counter++;
-
-			if (counter % 60 === 0) {
-				$scope.mm++;
-				$scope.ss = 0;
+			$scope.counter++;
+			
+			if ($scope.counter < $scope.setTime) {
+				calcLeast();
 			}
 
-			$scope.ss++;
-
-			if (counter === setTime) {
+			if ($scope.counter === $scope.setTime) {
 				$scope.stopTimer();
 				if ($scope.soundFlg) {
 					alert('♫');
 				} else {
-					navigator.vibrate(200);
+					navigator.vibrate([200,100,50,50,50]);
 				}
 				return;
 			}
@@ -61,6 +64,8 @@ module.controller('MainCtrl', ['$scope', '$interval', '$window', function($scope
 		$scope.startBtnDisabledFlg = false;
 		$scope.stopBtnDisabledFlg = true;
 		$scope.resetBtnDisabledFlg = false;
+		
+		calcLeast();
 	};
 
 	// 「RESET」押下処理 カウンターを初期値に戻す
@@ -73,33 +78,30 @@ module.controller('MainCtrl', ['$scope', '$interval', '$window', function($scope
 		$scope.stopBtnDisabledFlg = true;
 		$scope.resetBtnDisabledFlg = true;
 		
-		counter = 0;
-		$scope.mm = 0;
-		$scope.ss = 0;
+		$scope.counter = 0;
+		calcLeast();
 	};
 
 	// 「＋XX分」ボタン押下処理 設定時間にXX分を加算
 	$scope.addSetTimeMm = function (minute) {
-		$scope.setMm += minute;
-		setTime += minute * 60;
+		$scope.setTime += minute * 60;
+		calcLeast();
 	};
 
 	// 「＋XX秒」ボタン押下処理 設定時間にXX秒を加算
 	$scope.addSetTimeSs = function (second) {
-		var setSs = $scope.setSs;
-		if (setSs + second >= 60) {
-			$scope.setMm++;
-			$scope.setSs = setSs + second - 60;
-		} else {
-			$scope.setSs += second;
-		}
-		setTime += second;
+		$scope.setTime += second;
+		calcLeast();
 	};
 
 	// 「CLEAR」ボタン押下処理 設定時間をクリア
 	$scope.clearSetTime = function () {
-		$scope.setMm = 0;
-		$scope.setSs = 0;
-		setTime = 0;
+		$scope.setTime = 0;
+		calcLeast();
 	};
+	
+	// 残り時間を計算して設定
+	function calcLeast() {
+		$scope.leastTime = $scope.setTime < $scope.counter ? 0 : $scope.setTime - $scope.counter;
+	}
 }]);
